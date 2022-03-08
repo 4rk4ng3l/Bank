@@ -18,21 +18,26 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <input type="number" class="form-control form-control-user"
-                                        id="exampleInputDNI" aria-describedby="DNIHelp" min="0001" max="9999"
+                                        id="exampleInputDNI" aria-describedby="DNIHelp" min="0001" max="9999" name="dni"
                                         placeholder="Ingrese su numero de identificacion...">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
-                                        id="exampleInputEmail" aria-describedby="emailHelp"
+                                        id="exampleInputEmail" aria-describedby="emailHelp" name="email"
                                         placeholder="Ingrese su correo electronico...">
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user"
+                                    <input type="password" class="form-control form-control-user" name="password"
                                         id="exampleInputPassword" placeholder="Password">
                                 </div>
+                                @error('message')
+                                    <div id="error" style="color: red; font-weight=900;">{{$message}}</div>
+                                @enderror
+
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
                                         <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -40,14 +45,14 @@
                                             Me</label>
                                     </div>
                                 </div>
-                                <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                    Login
-                                </a>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Ingresar
+                                </button>
                                 <hr>
 
                             </form>
                             <hr>
-                            <div id="error" style="color: red; font-weight=900;">Mensaje de error</div>
+
                             {{-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div> --}}

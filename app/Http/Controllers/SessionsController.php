@@ -14,8 +14,14 @@ class SessionsController extends Controller
     public function store(){
         if(auth()->attempt(request(['dni', 'password'])) == false){
             return back()->withErrors([
-                'message' => 'El email o la contraseña son incorrectos, intente de nuevo',
+                'message' => 'La identificacion o la contraseña son incorrectos, intente de nuevo',
             ]);
         }
+        return redirect()->to('/');
+    }
+
+    public function destroy(){
+        auth()->logout();
+        return redirect()->to('/login');
     }
 }

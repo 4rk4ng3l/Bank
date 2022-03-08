@@ -22,25 +22,44 @@
                                 <input type="number" min="0000" max="9999" class="form-control form-control-user" id="dni" name="dni"
                                     placeholder="Numero de documento" required>
                             </div>
+                            @error('dni')
+                                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                                text-red-600 p-2 my-2">* {{ $message }}</p>
+                            @enderror
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="name" name="name" required
                                         placeholder="Nombre">
                                 </div>
                             </div>
+                            @error('name')
+                                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                                text-red-600 p-2 my-2">* {{ $message }}</p>
+                            @enderror
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email" name="email" required
                                     placeholder="Email Address">
                             </div>
+                            @error('email')
+                                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                                text-red-600 p-2 my-2">* {{ $message }}</p>
+                            @enderror
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user" required
                                         id="InputPassword" name="password" placeholder="password">
                                 </div>
+                                @error('password')
+                                    <p class="border border-red-500 rounded-md bg-red-100 w-full
+                                    text-red-600 p-2 my-2">* {{ $message }}</p>
+                                @enderror
+
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user"
                                         id="repeatPassword" name="password_confirmation" placeholder="Repeat Password">
                                 </div>
+
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Registrar Usuario

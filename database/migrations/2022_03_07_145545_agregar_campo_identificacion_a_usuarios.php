@@ -14,7 +14,8 @@ class AgregarCampoIdentificacionAUsuarios extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger("dni")->nullable(false);
+            $table->integer("dni")->nullable(false)->unique();
+            $table->index("dni");
         });
     }
 
@@ -26,7 +27,9 @@ class AgregarCampoIdentificacionAUsuarios extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropIndex("dni");
             $table->dropColumn("dni");
+
         });
     }
 }
