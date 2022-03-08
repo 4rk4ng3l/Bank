@@ -41,3 +41,7 @@ Route::get('/register', [RegisterController::class,'create'])
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
+// Rutas cuentas
+Route::resource('cuentas','App\Http\Controllers\CuentaController')
+    ->middleware('auth');
+

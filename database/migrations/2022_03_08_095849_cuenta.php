@@ -16,6 +16,7 @@ class Cuenta extends Migration
         Schema::create('cuentas', function(Blueprint $table){
             $table->id();
             $table->integer('dni')->nullable(false);
+            $table->text('nombre')->nullable(false);
             $table->bigInteger('balance')->unsigned();
             $table->timestamps();
             $table->index('id');
