@@ -20,8 +20,8 @@
                             </div>
                             <form class="user">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                        id="exampleInputDNI" aria-describedby="DNIHelp"
+                                    <input type="number" class="form-control form-control-user"
+                                        id="exampleInputDNI" aria-describedby="DNIHelp" min="0001" max="9999"
                                         placeholder="Ingrese su numero de identificacion...">
                                 </div>
                                 <div class="form-group">
@@ -47,11 +47,12 @@
 
                             </form>
                             <hr>
-                            <div class="text-center">
+                            <div id="error" style="color: red; font-weight=900;">Mensaje de error</div>
+                            {{-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
+                            </div> --}}
                             <div class="text-center">
-                                <a class="small" href="register.html">Create an Account!</a>
+                                <a class="small" href="{{route('register.index')}}">Crear una cuenta!</a>
                             </div>
                         </div>
                     </div>

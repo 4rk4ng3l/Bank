@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Principal
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -36,9 +36,9 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Movimientos cuentas:</h6>
-                <a class="collapse-item" href="buttons.html">Entre mis cuentas</a>
-                <a class="collapse-item" href="cards.html">A terceros</a>
+                <h6 class="collapse-header">Transacciones Bancarias:</h6>
+                <a class="collapse-item" href="buttons.html">Cuentas Propias</a>
+                <a class="collapse-item" href="cards.html">Cuentas de Terceros</a>
             </div>
         </div>
     </li>
@@ -54,8 +54,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Cuentas:</h6>
-                <a class="collapse-item" href="utilities-color.html">Saldos</a>
-                <a class="collapse-item" href="utilities-border.html">Movimientos</a>
+                <a class="collapse-item" href="utilities-color.html">Listar transferencias</a>
+                {{-- <a class="collapse-item" href="utilities-border.html">Movimientos</a> --}}
                 {{-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a> --}}
             </div>
@@ -67,7 +67,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Seguridad
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
