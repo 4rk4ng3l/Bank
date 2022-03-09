@@ -39,7 +39,13 @@ class CuentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cuenta = new Cuenta();
+        $cuenta->dni = $request->get('dni');
+        $cuenta->nombre = $request->get('nombre');
+        $cuenta->balance = $request->get('balance');
+        $cuenta->save();
+
+        return view('Layout.Cuenta.create')->with('status', 'Cuenta creada!');
     }
 
     /**
@@ -61,7 +67,8 @@ class CuentaController extends Controller
      */
     public function edit($id)
     {
-        return view('Layout.Cuenta.edit');
+        $cuenta = Cuenta::find($id);
+        return view('Layout.Cuenta.edit')->with('cuenta', $cuenta);
     }
 
     /**
@@ -73,7 +80,14 @@ class CuentaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cuenta = Cuenta::find($id);
+        $cuenta->nombre = $request->get('nombre');
+        $cuenta->balance = $request->get('balance');
+        $cuenta->save();
+
+        return view('Layout.Cuenta.edit')
+            ->with('status', 'Cuenta Actualizada!')
+            ->with('cuenta', $cuenta);                                    ;
     }
 
     /**
@@ -84,6 +98,6 @@ class CuentaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

@@ -26,6 +26,7 @@
                                 <p class="border border-red-500 rounded-md bg-red-100 w-full
                                 text-red-600 p-2 my-2">* {{ $message }}</p>
                             @enderror
+
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="name" name="name" required
@@ -36,6 +37,7 @@
                                 <p class="border border-red-500 rounded-md bg-red-100 w-full
                                 text-red-600 p-2 my-2">* {{ $message }}</p>
                             @enderror
+
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email" name="email" required
                                     placeholder="Email Address">
@@ -54,31 +56,16 @@
                                     <p class="border border-red-500 rounded-md bg-red-100 w-full
                                     text-red-600 p-2 my-2">* {{ $message }}</p>
                                 @enderror
-
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user"
                                         id="repeatPassword" name="password_confirmation" placeholder="Repeat Password">
                                 </div>
-
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Registrar Usuario
                             </button>
-                            {{-- <a href="" class="btn btn-primary btn-user btn-block">
-                                Registrar Cuenta
-                            </a> --}}
-                            <hr>
-                            {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                            </a> --}}
                         </form>
                         <hr>
-                        {{-- <div class="text-center">
-                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div> --}}
                         <div class="text-center">
                             <a class="small" href="{{route('login.index')}}">Tiene una cuenta? Ingresar!</a>
                         </div>

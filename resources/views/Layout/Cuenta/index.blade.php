@@ -1,6 +1,5 @@
 @extends('Layout.mainlayout')
 
-
 @section('title', 'Listado de Cuentas')
 
 @section('content')
@@ -48,14 +47,6 @@
 
                                 </tr>
                             </thead>
-                            {{-- <tfoot>
-                                <tr>
-                                    <th rowspan="1" colspan="1">Id</th>
-                                    <th rowspan="1" colspan="1">Nombre</th>
-                                    <th rowspan="1" colspan="1">Balance</th>
-                                    <th rowspan="1" colspan="1">Acciones</th>
-                                </tr>
-                            </tfoot> --}}
                             <tbody>
                                 @foreach($cuentas as $cuenta)
                                 <tr class="odd">
@@ -63,7 +54,7 @@
                                     <td class="">{{$cuenta->nombre}}</td>
                                     <td class="">{{$cuenta->balance}}</td>
                                     <td class="">
-                                        <a class="btn btn-info">Editar</a>
+                                        <a href="/cuentas/{{$cuenta->id}}/edit"class="btn btn-info">Editar</a>
                                         <button class="btn btn-danger">Eliminar</button>
                                     </td>
                                 </tr>
@@ -73,10 +64,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    {{-- <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of
-                            57 entries</div>
-                    </div> --}}
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                             <ul class="pagination">
