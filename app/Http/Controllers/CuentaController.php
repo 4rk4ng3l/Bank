@@ -14,7 +14,10 @@ class CuentaController extends Controller
      */
     public function index()
     {
-        $cuentas = DB::table('cuentas')->where('dni', '=', auth()->user()->dni)->get();
+        $cuentas = DB::table('cuentas')
+            ->select('id', 'nombre', 'balance')
+            ->where('dni', '=', auth()->user()->dni)
+            ->get();
         return view('Layout.Cuenta.index')->with('cuentas', $cuentas);
     }
 
