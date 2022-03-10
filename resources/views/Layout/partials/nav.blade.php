@@ -32,16 +32,15 @@
     <!-- Nav Item - Pages Collapse Menu -->
     @if (auth()->check())
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-archive"></i>
             <span>Cuentas</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">:</h6>
-                <a class="collapse-item" href="{{route('cuentas.index')}}">Listado de Cuentas</a>
-                <a class="collapse-item" href="{{route('cuentas.create')}}">Crear cuenta</a>
+                <a class="collapse-item" href="{{route('cuenta.index')}}">Listado de Cuentas</a>
+                <a class="collapse-item" href="{{route('cuenta.create')}}">Crear cuenta</a>
             </div>
         </div>
     </li>
@@ -50,13 +49,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-archive"></i>
-            <span>Movimientos</span>
+            <span>Transacciones Bancarias</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Transacciones Bancarias:</h6>
-                <a class="collapse-item" href="buttons.html">Cuentas Propias</a>
-                <a class="collapse-item" href="cards.html">Cuentas de Terceros</a>
+                <a class="collapse-item" href="/transferenciaPropia">Cuentas Propias</a>
+                <a class="collapse-item" href="/transferenciaTercero">Cuentas de Terceros</a>
             </div>
         </div>
     </li>

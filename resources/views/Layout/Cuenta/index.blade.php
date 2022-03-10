@@ -33,16 +33,16 @@
                             <thead>
                                 <tr role="row">
                                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                                        aria-label="Name: activate to sort column ascending" style="width: 55.469px;">Id
+                                        aria-label="Name: activate to sort column ascending" style="width: 50px;">Id
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                                        aria-label="Position: activate to sort column ascending" style="width: 264.641px;">
+                                        aria-label="Position: activate to sort column ascending" style="width: 200px;">
                                         Nombre</th>
                                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                                         aria-label="Office: activate to sort column ascending" style="width: 111.547px;">
                                         Balance</th>
                                     <th tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                                        style="width: 50.4062px;">Acciones
+                                        style="width: 60px;">Acciones
                                     </th>
 
                                 </tr>
@@ -54,8 +54,12 @@
                                     <td class="">{{$cuenta->nombre}}</td>
                                     <td class="">{{$cuenta->balance}}</td>
                                     <td class="">
-                                        <a href="/cuentas/{{$cuenta->id}}/edit"class="btn btn-info">Editar</a>
-                                        <button class="btn btn-danger">Eliminar</button>
+                                        <form action="{{route('cuenta.destroy', $cuenta->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="/cuenta/{{$cuenta->id}}/edit"class="btn btn-info">Editar</a>
+                                            <button type="submit"class="btn btn-danger">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -82,7 +86,7 @@
             </div>
         </div>
     </div>
-    <a href="{{route('cuentas.create')}}" class="btn btn-primary">Crear</a>
+    <a href="{{route('cuenta.create')}}" class="btn btn-primary">Crear</a>
 </div>
 </div>
 @endsection

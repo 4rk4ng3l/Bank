@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <input type="number" class="form-control form-control-user"
                                         id="exampleInputDNI" aria-describedby="DNIHelp" min="0001" max="9999" name="dni"
-                                        placeholder="Ingrese su numero de identificacion...">
+                                        placeholder="Ingrese su numero de identificacion..." required>
                                 </div>
                                 {{-- <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
@@ -32,7 +32,7 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" name="password"
-                                        id="exampleInputPassword" placeholder="Password">
+                                        id="exampleInputPassword" placeholder="Password" required>
                                 </div>
                                 @error('message')
                                     <div id="error" style="color: red; font-weight=900;">{{$message}}</div>

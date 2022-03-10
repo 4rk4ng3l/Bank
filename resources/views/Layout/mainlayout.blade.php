@@ -15,6 +15,6 @@
 
     </div>
     @include('Layout.partials.footer-scripts')
-
+    @yield('aditionalScripts');
 </body>
 </html>

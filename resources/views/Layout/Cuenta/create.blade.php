@@ -14,7 +14,7 @@
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Crear una cuenta!</h1>
                 </div>
-                <form class="user" method="POST" action="/cuentas">
+                <form class="user" method="POST" action="/cuenta">
                     @csrf
                     <div class="form-group">
                         <input type="hidden" id="dni" name="dni" value="{{auth()->user()->dni}}">
@@ -48,7 +48,7 @@
                         Crear cuenta
                     </button>
                     <div id="cancelar" class="btn btn-danger btn-user btn-block">
-                        <a href="{{route('cuentas.index')}}" class="text-white">Cancelar</a>
+                        <a href="{{route('cuenta.index')}}" class="text-white">Cancelar</a>
                     </div>
 
                 </form>

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Facades\DB;
 class Cuenta extends Model
 {
     use HasFactory;
@@ -21,4 +22,22 @@ class Cuenta extends Model
         'nombre',
         'balance',
     ];
+
+    public function getCuentasExcept($id){
+        $cuentas = DB::table('cuentas')
+        ->select('id', 'nombre')
+        ->where('dni', '=', auth()->user()->dni)
+        ->where('id', '!=', $id)
+        ->get();
+
+        return $cuentas;
+    }
+
+    public function getCuentasAll(){
+        $cuentas = DB::table('cuentas')
+        ->select('id', 'nombre', 'balance')
+        ->where('dni', '=', auth()->user()->dni)
+        ->get();
+        return $cuentas;
+    }
 }

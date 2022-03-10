@@ -14,10 +14,8 @@ class CuentaController extends Controller
      */
     public function index()
     {
-        $cuentas = DB::table('cuentas')
-            ->select('id', 'nombre', 'balance')
-            ->where('dni', '=', auth()->user()->dni)
-            ->get();
+        $cuenta = new Cuenta();
+        $cuentas = $cuenta->getCuentasAll();
         return view('Layout.Cuenta.index')->with('cuentas', $cuentas);
     }
 
@@ -56,7 +54,7 @@ class CuentaController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -83,7 +81,7 @@ class CuentaController extends Controller
         $cuenta = Cuenta::find($id);
         $cuenta->nombre = $request->get('nombre');
         $cuenta->balance = $request->get('balance');
-        $cuenta->save();
+        $cuenta->update();
 
         return view('Layout.Cuenta.edit')
             ->with('status', 'Cuenta Actualizada!')
@@ -98,6 +96,22 @@ class CuentaController extends Controller
      */
     public function destroy($id)
     {
+        $cuenta = Cuenta::find($id);
+        $cuenta->delete();
+        return redirect('/cuenta');
+    }
 
+    public function getCuentasAll()
+    {
+        $cuenta = new Cuenta();
+        $cuentas = $cuenta->getCuentasAll();
+        return response()->json($cuentas);
+    }
+
+    public function getCuentasExcept(Request $request)
+    {
+        $cuenta = new Cuenta();
+        $cuentas = $cuenta->getCuentasExcept($request->id);
+        return response()->json($cuentas);
     }
 }

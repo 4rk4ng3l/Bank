@@ -13,7 +13,7 @@ use App\Http\Controllers\SessionsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Ruta de inicio
 Route::get('/', function () {
     return view('inicio');
 })->middleware('auth');
@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/inicio', function(){
     return view('inicio');
 });
-
+//Control de sesion
 Route::get('/login', [SessionsController::class,'create'])
     ->middleware('guest')
     ->name('login.index');
@@ -33,7 +33,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
-
+//Registro de usuarios
 Route::get('/register', [RegisterController::class,'create'])
     ->middleware('guest')
     ->name('register.index');
@@ -41,7 +41,15 @@ Route::get('/register', [RegisterController::class,'create'])
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
-// Rutas cuentas
-Route::resource('cuentas','App\Http\Controllers\CuentaController')
+// Ruta cuentas controller
+Route::resource('cuenta','App\Http\Controllers\CuentaController')
     ->middleware('auth');
+
+// Rutas Movimientos de cuentas
+Route::get('/transferenciaPropia', function(){
+    return view('Tranferencias.cuentasPropias');
+});
+Route::get('/transferenciaTerceros', function(){
+    return view('Tranferencias.cuentasTerceros');
+});
 
