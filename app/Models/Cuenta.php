@@ -28,7 +28,7 @@ class Cuenta extends Model
     }
 
     public function transacciones(){
-        return $this->hasMany(Transaccion::class);
+        return $this->hasMany(Transferencia::class);
     }
 
     public function getCuentasExcept($id){
@@ -50,16 +50,13 @@ class Cuenta extends Model
     }
 
     public function getCuentasTerceros(){
-        $myIdUser = auth()->user()->dni;
-        // $cuentas = DB::raw('
-        //     select c.id, concat(c.nombre, " | ", u.name)
-        //     from cuentas c
-        //     inner join users u on c.dni = u.dni
-        //     where c.dni !=' . $myIdUser);
+        $myDni = auth()->user()->dni;
         $cuentas = DB::table('cuentas')
-        ->select('id', 'nombre')
-        ->where('dni', '!=', auth()->user()->dni)
-        ->get();
+                   ->join('users', 'users.dni', '=', 'cuentas.dni')
+                   ->select('cuentas.id', 'cuentas.nombre', 'users.name')
+                   ->where('cuentas.dni', '!=', $myDni)
+                   ->get();
+
         return $cuentas;
     }
 }
