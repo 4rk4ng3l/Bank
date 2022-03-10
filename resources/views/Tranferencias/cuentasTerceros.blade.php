@@ -46,7 +46,7 @@
 
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="number" maxlength="12" class="form-control form-control-user" id="valor" name="valor" required
+                            <input type="number" maxlength="12 min="1" class="form-control form-control-user" id="valor" name="valor" required
                                 placeholder="Valor a Transferir">
                         </div>
                     </div>
