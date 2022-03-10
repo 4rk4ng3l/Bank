@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\TransferenciaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,4 +53,25 @@ Route::get('/transferenciaPropia', function(){
 Route::get('/transferenciaTerceros', function(){
     return view('Tranferencias.cuentasTerceros');
 });
+
+Route::get('transferencias_propias', ['App\Http\Controllers\TransferenciaController', 'propias'])
+    ->middleware('auth')
+    ->name('transferencia.propia');
+
+Route::get('transferencias_terceros', ['App\Http\Controllers\TransferenciaController', 'terceros'])
+    ->middleware('auth')
+    ->name('transferencia.terceros');
+
+Route::post('transferencia_guardar_propia', [TransferenciaController::class, 'guardarPropia'])
+    ->middleware('auth')
+    ->name('transferencia.guardarPropia');
+
+Route::post('transferencia_guardar_tercero', [TransferenciaController::class, 'guardarTerceros'])
+->middleware('auth')
+->name('transferencia.guardarTerceros');
+
+Route::get('transferencias_listado', ['App\Http\Controllers\TransferenciaController', 'index'])
+    ->middleware('auth')
+    ->name('transferencia.listado');
+
 

@@ -53,8 +53,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/transferenciaPropia">Cuentas Propias</a>
-                <a class="collapse-item" href="/transferenciaTercero">Cuentas de Terceros</a>
+                <a class="collapse-item" href="{{route('transferencia.propia')}}">Cuentas Propias</a>
+                <a class="collapse-item" href="{{route('transferencia.terceros')}}">Cuentas de Terceros</a>
             </div>
         </div>
     </li>
@@ -70,7 +70,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Cuentas:</h6>
-                <a class="collapse-item" href="utilities-color.html">Listar transferencias</a>
+                <a class="collapse-item" href="{{route('transferencia.listado')}}">Listar transferencias</a>
             </div>
         </div>
     </li>

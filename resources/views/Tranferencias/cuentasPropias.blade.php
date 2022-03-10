@@ -7,21 +7,23 @@
 
 <div class="container H-100">
 <div class="text-center justify-content-center">
-    <H1>Transferencias a cuentas de Terceros</H1>
+    <H1>Transferencias a cuentas propias</H1>
     <div class="row justify-content-center" >
         <div class="col-lg-8">
             <div class="p-5">
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Seleccione las cuentas</h1>
                 </div>
-                <form class="user" method="POST" action="">
+                <form class="user" method="POST" action="{{route('transferencia.guardarPropia')}}">
                     @csrf
+                    @if(count($cuentas)>1)
+                    <div>Cuenta Origen</div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
                             <select class="form-control" name="idCuentaOrigen" id="idCuentaOrigen" required>
                                 <option value="">Seleccione la cuenta origen</option>
-                                @isset($cuentasOrigen)
-                                    @foreach($cuentasOrigen as $cuenta)
+                                @isset($cuentas)
+                                    @foreach($cuentas as $cuenta)
                                     <option value="{{ $cuenta->id }}">{{ $cuenta->nombre }}  </option>
                                     @endforeach
                                 @endisset
@@ -33,8 +35,8 @@
                         <div class="col-sm-12 mb-3 mb-sm-0">
                             <select class="form-control" name="idCuentaDestino" id="idCuentaDestino" required>
                                 <option value="">Selecione la cuenta destino</option>
-                                @isset($cuentasDestino)
-                                    @foreach($cuentasDestino as $cuenta)
+                                @isset($cuentas)
+                                    @foreach($cuentas as $cuenta)
                                     <option value="{{ $cuenta->id }}">{{ $cuenta->nombre }}</option>
                                     @endforeach
                                 @endisset
@@ -54,12 +56,14 @@
                     <div id="cancelar" class="btn btn-danger btn-user btn-block">
                         <a href="/" class="text-white">Cancelar</a>
                     </div>
-
+                    @else
+                        <H1>No dispone de suficientes cuentas!.</H1>
+                    @endif
                 </form>
                 <hr>
                 @isset($status)
                     <div class="alert alert-success" role="alert">
-                        se ha realizado la transferencia.
+                        {{$status}}
                     </div>
                 @endisset
 
