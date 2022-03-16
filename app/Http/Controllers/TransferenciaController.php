@@ -6,24 +6,26 @@ use App\Models\Transferencia as Transferencia;
 use App\Models\Cuenta as Cuenta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class TransferenciaController extends Controller
 {
     public function index()
     {
-        $transferencias = DB::table('transacciones')
-        ->select('id', 'idCuentaOrigen', 'idCuentaDestino', 'valor')
-        ->get();
+        $transferencia = new Transferencia();
+        $transferencias =  $transferencia->getTransferenciasByUserAuth();
         return view('Tranferencias.transferencias')->with('transferencias', $transferencias);
     }
 
-    public function propias(){
+    public function propias()
+    {
         $cuenta = new Cuenta();
         $cuentas = $cuenta->getCuentasAll();
         return view('Tranferencias.cuentasPropias')
             ->with('cuentas', $cuentas);
     }
 
-    public function terceros(){
+    public function terceros()
+    {
         $cuenta = new Cuenta();
         $cuentasOrigen = $cuenta->getCuentasAll();
         $cuentasTerceros = $cuenta->getCuentasTerceros();
@@ -32,7 +34,8 @@ class TransferenciaController extends Controller
             ->with('cuentasTerceros', $cuentasTerceros);
     }
 
-    public function guardarPropia(Request $request){
+    public function guardarPropia(Request $request)
+    {
         $idCuentaOrigen = $request->idCuentaOrigen;
         $idCuentaDestino = $request->idCuentaDestino;
         $valor = $request->valor;
@@ -40,16 +43,16 @@ class TransferenciaController extends Controller
         $cuenta = new Cuenta();
         $cuentas = $cuenta->getCuentasAll();
 
-        if($valor <= 0){
+        if ($valor <= 0) {
             return view('Tranferencias.cuentasPropias')
-            ->with('cuentas', $cuentas)
-            ->with('status', "El monto debe ser mayor a Cero!.");
+                ->with('cuentas', $cuentas)
+                ->with('status', "El monto debe ser mayor a Cero!.");
         }
 
-        if($idCuentaOrigen == $idCuentaDestino){
+        if ($idCuentaOrigen == $idCuentaDestino) {
             return view('Tranferencias.cuentasPropias')
-            ->with('cuentas', $cuentas)
-            ->with('status', "No se puede realizar transferencia entre la misma cuenta!,");
+                ->with('cuentas', $cuentas)
+                ->with('status', "No se puede realizar transferencia entre la misma cuenta!,");
         }
         $transferencia = new Transferencia();
         $status = $transferencia->transferirCuenta($idCuentaOrigen, $idCuentaDestino, $valor);
@@ -58,7 +61,8 @@ class TransferenciaController extends Controller
             ->with('status', $status);
     }
 
-    public function guardarTerceros(Request $request){
+    public function guardarTerceros(Request $request)
+    {
         $idCuentaOrigen = $request->idCuentaOrigen;
         $idCuentaDestino = $request->idCuentaDestino;
         $valor = $request->valor;
@@ -67,11 +71,11 @@ class TransferenciaController extends Controller
         $cuentasOrigen = $cuenta->getCuentasAll();
         $cuentasTerceros = $cuenta->getCuentasTerceros();
 
-        if($valor <= 0){
+        if ($valor <= 0) {
             return view('Tranferencias.cuentasTerceros')
-            ->with('cuentasOrigen', $cuentasOrigen)
-            ->with('cuentasTerceros', $cuentasTerceros)
-            ->with('status', "El monto debe ser mayor a Cero!.");
+                ->with('cuentasOrigen', $cuentasOrigen)
+                ->with('cuentasTerceros', $cuentasTerceros)
+                ->with('status', "El monto debe ser mayor a Cero!.");
         }
 
         $transferencia = new Transferencia();
